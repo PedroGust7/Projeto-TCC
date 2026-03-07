@@ -9,28 +9,48 @@ public class MoradiaDto {
     private long id; 
     private String cep;
     private String avenida;
-    private int sn;
+    private String sn;
     private String bairro;
     private String cidade;
     private PerfisModelo perfil;
 
 
-    public MoradiaDto(MoradiaModel en) {
-    if (en != null) {
-        this.id = en.getId();
-        this.cep = en.getCep();
-        this.avenida = en.getAvenida();
-        this.sn = en.getSn();
-        this.bairro = en.getBairro();
-        this.cidade = en.getCidade();
+    
+
+
+  
+public MoradiaDto(long id, String cep, String avenida, String sn, String bairro, String cidade) {
+        this.id = id;
+        this.cep = cep;
+        this.avenida = avenida;
+        this.sn = sn;
+        this.bairro = bairro;
+        this.cidade = cidade;
     }
-}
+
+
+      
+public MoradiaDto(MoradiaModel entiy) {
+        this.id = entiy.getId();
+        this.cep = entiy.getCep();
+        this.avenida = entiy.getAvenida();
+        this.sn = entiy.getSn();
+        this.bairro = entiy.getBairro();
+        this.cidade = entiy.getCidade();
+    }
+
+
+
 
 
      public MoradiaDto() {
         
     }
 
+
+
+
+    
 
 
     public long getId() {
@@ -55,17 +75,17 @@ public class MoradiaDto {
     public void setAvenida(String avenida) {
         this.avenida = avenida;
     }
-    public int getSn() {
+    public String getSn() {
         return sn;
     }
-    public void setSn(int sn) {
+    public void setSn(String sn) {
         this.sn = sn;
     }
     public String getBairro() {
         return bairro;
     }
     public void setBairro(String bairro) {
-        bairro = bairro;
+        this.bairro = bairro;
     }
     public String getCidade() {
         return cidade;
@@ -76,12 +96,10 @@ public class MoradiaDto {
     public PerfisModelo getPerfil() {
         return perfil;
     }
-    public void setPerfil(PerfisModelo perfil) {
-        this.perfil = perfil;
-    }
+  
 
 
 
     
-    
+
 }

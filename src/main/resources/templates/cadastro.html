@@ -11,8 +11,10 @@
       <header class="bg-sky-500 py-5 text-3xl  text-center text-amber-50 font-extrabold">CADASTRO DE ATLETA</header>
       
       
+      <!--TUDO QUE TA NO (atletaDto Prentence a esse formulario então não preicsa obj.name)-->
+
       <main class="flex flex-col  w-full  items-center border min-h-screen ">
-            <form action="" class="flex flex-col gap-10">
+            <form  th:action="@{/atleta/save}" th:object="${atletaDtos}"   class="flex flex-col gap-10" method="post">
                 
                 <!--CADASTRO  PREMEIRA PARTE-->
                <section class="flex bg-gray-50/60 py-14 px-10 rounded-2xl gap-12 mr-auto w-full ">
@@ -53,12 +55,12 @@
                         
                         <div class="w-full flex flex-col gap-1.5">
                             <p class="text-2xl font-extrabold  mr-7 text-gray-400">NOME COMPLETO</p>
-                            <input  type="text" name="" placeholder="email@gmail" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input th:field="*{name}"   type="text" placeholder="Digite seu nome" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                          <div class="w-1/2 flex flex-col gap-1.5">
                              <p class="text-2xl font-extrabold  mr-7 text-gray-400">DATA DE NASCIMENTO</p>
-                            <input  type="date" name="" placeholder="email@gmail" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input th:field="*{dataNascimento}"  type="date" name=""  id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                     </section>
@@ -67,12 +69,12 @@
                         
                         <div class="w-full flex flex-col gap-1.5">
                             <p class="text-2xl font-extrabold  mr-7 text-gray-400">CPF</p>
-                            <input  type="number" name="" placeholder="000.000.000-00" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input  th:field="*{cpf}" type="number" name="" placeholder="000.000.000-00" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                         <div class="w-full flex flex-col gap-1.5">
                             <p class="text-2xl font-extrabold  mr-7 text-gray-400">RG</p>
-                            <input  type="number" name="" placeholder="000.000.000-0" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input  th:field="*{rg}"  type="number" name="" placeholder="000.000.000-0" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                           <div class="w-full flex flex-col gap-1.5">
@@ -103,12 +105,12 @@
                         
                         <div class="w-full flex flex-col gap-1.5">
                             <p class="text-2xl font-extrabold  mr-7 text-gray-400">EMAIL</p>
-                            <input  type="email" name="" placeholder="exemplo@email.com" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input  th:field="*{email}"  type="email" name="" placeholder="exemplo@email.com" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                         <div class="w-full flex flex-col gap-1.5">
                             <p class="text-2xl font-extrabold  mr-7 text-gray-400">SENHA</p>
-                            <input  type="password" name="" placeholder="Defina uma senha" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input th:field="*{senha}" type="password" name="" placeholder="Defina uma senha" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                          </section>
@@ -117,12 +119,12 @@
                         
                         <div class="w-full flex flex-col gap-1.5">
                             <p class="text-2xl font-extrabold  mr-7 text-gray-400">Tel. Fixo</p>
-                            <input  type="number" name="" placeholder="(00) 0000-0000" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input th:field="*{telefoneFixo}"  type="number" name="" placeholder="(00) 0000-0000" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                         <div class="w-full flex flex-col gap-1.5">
                             <p class="text-2xl font-extrabold  mr-7 text-gray-400">Celular / Telemóvel</p>
-                            <input  type="number" name="" placeholder="(00) 0000-0000" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input th:field="*{telefoneFixo}"  type="number" name="" placeholder="(00) 0000-0000" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
                           
                          </section>
@@ -142,18 +144,18 @@
                         
                         <div class="w-1/6 flex flex-col gap-1.5">
                             <p class="text-2xl font-extrabold  mr-7 text-gray-400">CEP</p>
-                            <input  type="number" name="" placeholder="00000-000" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input th:field="*{moradia_fk.cep}"  type="number" name="" placeholder="00000-000" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                         <div class="w-full flex flex-col gap-1.5">
                             <p class="text-2xl font-extrabold  mr-7 text-gray-400"> RUA / AVENIDA</p>
-                            <input  type="text" name="" placeholder="Nome da rua" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input  th:field="*{moradia_fk.avenida}" type="text" name="" placeholder="Nome da rua" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
 
                          <div class="w-1/6 flex flex-col gap-1.5">
                             <p class="text-2xl font-extrabold  mr-7 text-gray-400">NÚMERO</p>
-                            <input  type="password" name="" placeholder="Ex:" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input th:field="*{moradia_fk.sn}" type="password" name="" placeholder="Ex:" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                         
@@ -167,18 +169,18 @@
                         
                         <div class=" w-full flex flex-col gap-1.5">
                             <p class="text-2xl font-extrabold  mr-7 text-gray-400">BAIRRO</p>
-                            <input  type="text" name="" placeholder="Insira o bairro" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input th:field="*{moradia_fk.bairro}"  type="text" name="" placeholder="Insira o bairro" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                         <div class="w-full flex flex-col gap-1.5">
                             <p class="text-2xl font-extrabold  mr-7 text-gray-400">CIDADE</p>
-                            <input  type="text" name="" placeholder="Nome da cidade" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input th:field="*{moradia_fk.cidade}"  type="text" name="" placeholder="Nome da cidade" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
 
                          <div class="w-1/6 flex flex-col gap-1.5">
                             <p class="text-2xl font-extrabold  mr-7 text-gray-400">UF</p>
-                            <input  type="password" name="" placeholder="Ex:" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input  type="text" name="" placeholder="Ex:" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                         
@@ -206,12 +208,12 @@
                     
                         <div class="w-full flex flex-col gap-1.5">
                             <p class="text-2xl font-extrabold  mr-7 text-gray-400">ALTURA , (M)</p>
-                            <input  type="text" name="" placeholder="Nome da rua" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input th:field="*{alturaCetimentro}"  type="text" name="" placeholder="Nome da rua" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                          <div class="w-full flex flex-col gap-1.5">
                             <p class="text-2xl font-extrabold  mr-7 text-gray-400"> PESO , (KG)</p>
-                            <input  type="text" name="" placeholder="Nome da rua" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input th:field="*{pesoMigrama}" type="text" name="" placeholder="Nome da rua" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                          <div class="w-full flex flex-col gap-1.5">
@@ -232,7 +234,7 @@
 
                          <div class="w-full flex flex-col gap-1.5">
                             <p class="text-2xl font-extrabold  mr-7 text-gray-400"> RUA / AVENIDA</p>
-                            <input  type="text" name="" placeholder="Nome da rua" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input  th:field="*{moradia_fk.bairro}" type="text" name="" placeholder="Nome da rua" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
                          </section>
                          <!----->
@@ -258,17 +260,17 @@
 
                         <div class="w-full flex flex-col gap-1.5">
                             <label class="text-2xl font-extrabold  mr-7 text-gray-400">Nome da Mãe</label>
-                            <input  type="text" name="" placeholder="Nome completo da mãe" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input th:field="*{pais_fk.maeNome}" type="text" name="" placeholder="Nome completo da mãe" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                          <div class="w-full flex flex-col gap-1.5">
                             <label class="text-2xl font-extrabold  mr-7 text-gray-400">Telefone Fixo</label>
-                            <input  type="number" name="" placeholder="(00) 0000-0000" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input th:field="*{pais_fk.maeTelefone}" type="number" name="" placeholder="(00) 0000-0000" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                          <div class="w-full flex flex-col gap-1.5">
                             <label class="text-2xl font-extrabold  mr-7 text-gray-400">E-mail</label>
-                            <input  type="text" name="" placeholder="mae@email.com" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input th:field="*{pais_fk.maeEmail}"  type="text" name="" placeholder="mae@email.com" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                             
@@ -284,18 +286,18 @@
                      </div>
 
                         <div class="w-full flex flex-col gap-1.5">
-                            <label class="text-2xl font-extrabold  mr-7 text-gray-400">Nome da Mãe</label>
-                            <input  type="text" name="" placeholder="Nome completo da mãe" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <label class="text-2xl font-extrabold  mr-7 text-gray-400">Nome do Pai</label>
+                            <input th:field="*{pais_fk.paiName}"  type="text" name="" placeholder="Nome completo da mãe" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                          <div class="w-full flex flex-col gap-1.5">
                             <label class="text-2xl font-extrabold  mr-7 text-gray-400">Telefone Fixo</label>
-                            <input  type="number" name="" placeholder="(00) 0000-0000" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input th:field="*{pais_fk.paiTelefone}"  type="number" name="" placeholder="(00) 0000-0000" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                          <div class="w-full flex flex-col gap-1.5">
                             <label class="text-2xl font-extrabold  mr-7 text-gray-400">E-mail</label>
-                            <input  type="text" name="" placeholder="mae@email.com" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input th:field="*{pais_fk.paiEmail}"  type="text" name="" placeholder="mae@email.com" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                             

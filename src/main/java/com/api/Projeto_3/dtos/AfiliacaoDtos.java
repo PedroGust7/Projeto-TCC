@@ -5,9 +5,13 @@ import java.io.Serializable;
 import com.api.Projeto_3.model.AfiliacaoModelo;
 import com.api.Projeto_3.model.PerfisModelo;
 
+
+
 public class AfiliacaoDtos implements Serializable {
     
     private static final long serialVersionUID = 1L;
+ 
+
     private  Long id;
     private  String maeNome;
     private  String maeTelefone;
@@ -17,11 +21,8 @@ public class AfiliacaoDtos implements Serializable {
     private  String paiEmail;
     private PerfisModelo perfis;
 
-
-     public AfiliacaoDtos(AfiliacaoModelo  en){
-        this.id = en.getId();
-     }
     
+
      
 
     public AfiliacaoDtos(Long id, String maeNome, String maeTelefone, String maeEmail, String paiName,
@@ -34,14 +35,31 @@ public class AfiliacaoDtos implements Serializable {
         this.paiTelefone = paiTelefone;
         this.paiEmail = paiEmail;
 
+        
+
     }
 
+    public AfiliacaoDtos(AfiliacaoModelo model) {
+   
+        this.id = model.getId();
+        this.maeNome = model.getMaeNome();
+        this.maeTelefone = model.getMaeTelefone();
+        this.maeEmail = model.getMaeEmail();
+        this.paiName = model.getPaiName(); 
+        this.paiTelefone = model.getPaiTelefone();
+        this.paiEmail = model.getPaiEmail();
+        
+        this.perfis = model.getPerfis(); 
+    }
+
+
+
      public AfiliacaoDtos(){
+    }
 
-     }
 
+    
 
-      
 
     public Long getId() {
         return id;

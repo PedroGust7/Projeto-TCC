@@ -6,8 +6,6 @@ import com.api.Projeto_3.model.enums.EnumUf;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,27 +21,25 @@ public class MoradiaModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-     @Column(name = "mor_cep" , nullable = false  , length =50)
+     @Column(name = "mor_cep" , length =50)
     private String cep;
 
-    @Column(name = "mor_avenida" , nullable = false  , length =250)
+    @Column(name = "mor_avenida" , length =250)
     private String avenida;
 
-    @Column(name = "mor_sn" , nullable = false  , length =50)
-    private int sn;
+    @Column(name = "mor_sn" , length =50)
+    private String sn;
 
-    @Column(name = "mor_bairro" , nullable = false  , length =250)
+    @Column(name = "mor_bairro" , length =250)
     private String bairro;
 
-    @Column(name = "mor_cidade" , nullable = false  , length =50)
+    @Column(name = "mor_cidade" , length =50)
     private String cidade;
 
     @OneToOne(mappedBy = "moradia_fk")
     private PerfisModelo perfil;
 
-    
-    @Enumerated(EnumType.STRING)
-    private EnumUf uf;
+   
 
     
 
@@ -53,16 +49,16 @@ public class MoradiaModel implements Serializable {
 
 
 
-    public MoradiaModel(long id, String cep, String avenida, int sn, String bairro, String cidade, PerfisModelo perfil,
+    public MoradiaModel(long id, String cep, String avenida, String sn, String bairro, String cidade, PerfisModelo perfil,
             EnumUf uf) {
         this.id = id;
         this.cep = cep;
         this.avenida = avenida;
         this.sn = sn;
-        bairro = bairro;
+        this.bairro = bairro;
         this.cidade = cidade;
         this.perfil = perfil;
-        this.uf = uf;
+        
     }
 
 
@@ -103,13 +99,13 @@ public class MoradiaModel implements Serializable {
 
 
 
-    public int getSn() {
+    public String getSn() {
         return sn;
     }
 
 
 
-    public void setSn(int sn) {
+    public void setSn(String sn) {
         this.sn = sn;
     }
 
@@ -122,7 +118,7 @@ public class MoradiaModel implements Serializable {
 
 
     public void setBairro(String bairro) {
-        bairro = bairro;
+        this.bairro = bairro;
     }
 
 
@@ -151,15 +147,7 @@ public class MoradiaModel implements Serializable {
 
 
 
-    public EnumUf getUf() {
-        return uf;
-    }
-
-
-
-    public void setUf(EnumUf uf) {
-        this.uf = uf;
-    }
+  
 
 
     

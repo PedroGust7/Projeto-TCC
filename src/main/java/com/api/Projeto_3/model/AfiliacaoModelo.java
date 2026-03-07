@@ -20,27 +20,27 @@ public class AfiliacaoModelo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
 
-    @Column(name = "maeNome" , nullable = false , length = 50)
+    @Column(name = "maeNome" ,  length = 50)
     private  String maeNome;
 
-    @Column(name = "maeTelefone" , nullable = false)
+    @Column(name = "maeTelefone" )
     private  String maeTelefone;
 
-    @Column(name = "maeEmail" , nullable = false)
+    @Column(name = "maeEmail" )
     private  String maeEmail;
 
-    @Column(name = "paiName" , nullable = false)
+    @Column(name = "paiName" )
     private  String paiName;
 
 
-    @Column(name = "paiTelefone" , nullable = false)
+    @Column(name = "paiTelefone" )
     private  String paiTelefone;
 
 
-    @Column(name = "paiEmail" , nullable = false)
+    @Column(name = "paiEmail" )
     private  String paiEmail;
 
-    @OneToOne(mappedBy = "pais")
+    @OneToOne(mappedBy = "pais_fk")
     private PerfisModelo perfis;
 
     

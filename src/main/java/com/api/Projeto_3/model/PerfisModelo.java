@@ -1,7 +1,9 @@
 package com.api.Projeto_3.model;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -14,9 +16,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -36,6 +36,7 @@ public class PerfisModelo implements Serializable {
     private String name;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd") // ADICIONE ESTA LINHA AQUI
     @Column(name = "per_datNascimento" )
     private Date dataNascimento;
 
@@ -59,34 +60,32 @@ public class PerfisModelo implements Serializable {
     private String telefoneZap;
 
     @Column(name = "per_PesoMigrama")
-    private Double pesoMigrama;
+    private String pesoMigrama;
 
     @Column(name = "per_altura")
-    private Double alturaCetimentro;
+    private String  alturaCetimentro;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fal_fk" , unique = true )
-    private AfiliacaoModelo pais;
+    private AfiliacaoModelo pais_fk;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "mord")
-    private MoradiaModel moradia_fk; 
-
-
-    @ManyToMany
-    @JoinTable(name = "AcessoPerfil",
-        joinColumns = @JoinColumn(name = "perfRole_fk"),
-        inverseJoinColumns = @JoinColumn(name = "rolePerf")
-    )
-    private Set<RoleModel> roles = new HashSet<>();
+    private MoradiaModel moradia_fk;
 
 
     
+    
+
+
+    public PerfisModelo() {
+    }
+
 
 
     public PerfisModelo(Long id, byte[] fotoImg, String name, Date dataNascimento, String cpf, String rg, String email,
-            String senha, String telefoneFixo, String telefoneZap, Double pesoMigrama, Double alturaCetimentro,
-            AfiliacaoModelo pais, MoradiaModel moradia_fk, Set<RoleModel> roles) {
+            String senha, String telefoneFixo, String telefoneZap, String pesoMigrama, String  alturaCetimentro,
+            AfiliacaoModelo pais_fk, MoradiaModel moradia_fk) {
         this.id = id;
         this.fotoImg = fotoImg;
         this.name = name;
@@ -99,178 +98,121 @@ public class PerfisModelo implements Serializable {
         this.telefoneZap = telefoneZap;
         this.pesoMigrama = pesoMigrama;
         this.alturaCetimentro = alturaCetimentro;
-        this.pais = pais;
+        this.pais_fk = pais_fk;
         this.moradia_fk = moradia_fk;
-        this.roles = roles;
-    }
-
-
-    public PerfisModelo() {
-       
     }
 
     public Long getId() {
         return id;
     }
 
-
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public byte[] getFotoImg() {
         return fotoImg;
     }
 
-
     public void setFotoImg(byte[] fotoImg) {
         this.fotoImg = fotoImg;
     }
-
 
     public String getName() {
         return name;
     }
 
-
     public void setName(String name) {
         this.name = name;
     }
-
 
     public Date getDataNascimento() {
         return dataNascimento;
     }
 
-
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-
 
     public String getCpf() {
         return cpf;
     }
 
-
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
 
     public String getRg() {
         return rg;
     }
 
-
     public void setRg(String rg) {
         this.rg = rg;
     }
-
 
     public String getEmail() {
         return email;
     }
 
-
     public void setEmail(String email) {
         this.email = email;
     }
-
 
     public String getSenha() {
         return senha;
     }
 
-
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
 
     public String getTelefoneFixo() {
         return telefoneFixo;
     }
 
-
     public void setTelefoneFixo(String telefoneFixo) {
         this.telefoneFixo = telefoneFixo;
     }
-
 
     public String getTelefoneZap() {
         return telefoneZap;
     }
 
-
     public void setTelefoneZap(String telefoneZap) {
         this.telefoneZap = telefoneZap;
     }
 
-
-    public Double getPesoMigrama() {
+    public String  getPesoMigrama() {
         return pesoMigrama;
     }
 
-
-    public void setPesoMigrama(Double pesoMigrama) {
+    public void setPesoMigrama(String  pesoMigrama) {
         this.pesoMigrama = pesoMigrama;
     }
 
-
-    public Double getAlturaCetimentro() {
+    public String  getAlturaCetimentro() {
         return alturaCetimentro;
     }
 
-
-    public void setAlturaCetimentro(Double alturaCetimentro) {
+    public void setAlturaCetimentro(String  alturaCetimentro) {
         this.alturaCetimentro = alturaCetimentro;
     }
 
-
-    public AfiliacaoModelo getPais() {
-        return pais;
+    public AfiliacaoModelo getPais_fk() {
+        return pais_fk;
     }
 
-
-    public void setPais(AfiliacaoModelo pais) {
-        this.pais = pais;
+    public void setPais(AfiliacaoModelo pais_fk) {
+        this.pais_fk = pais_fk;
     }
-
 
     public MoradiaModel getMoradia_fk() {
         return moradia_fk;
     }
 
-
     public void setMoradia_fk(MoradiaModel moradia_fk) {
         this.moradia_fk = moradia_fk;
-    }
-
-
-    public Set<RoleModel> getRoles() {
-        return roles;
-    }
-
-
-    public void setRoles(Set<RoleModel> roles) {
-        this.roles = roles;
-    }
-
-
-    @Override
-    public String toString() {
-        return "PerfisModelo [id=" + id + ", fotoImg=" + Arrays.toString(fotoImg) + ", name=" + name
-                + ", dataNascimento=" + dataNascimento + ", cpf=" + cpf + ", Rg=" + rg + ", email=" + email + ", senha="
-                + senha + ", telefoneFixo=" + telefoneFixo + ", telefoneZap=" + telefoneZap + ", pesoMigrama="
-                + pesoMigrama + ", alturaCetimentro=" + alturaCetimentro + ", pais=" + pais + ", moradia_fk="
-                + moradia_fk + ", roles=" + roles + "]";
-    }
-
-
-    
- 
+    } 
 
 
     
