@@ -71,7 +71,6 @@ public class AtletaService {
             atl.setPais(pais);
 
     }
-
     //Salvados Moradias
 
     private void salvarMoradia(MoradiaDto en , AtletaModelo atl){
@@ -86,12 +85,6 @@ public class AtletaService {
            atl.setMoradia_fk(mor);
 
     }
-
-  
-
-    
-
-
 
     }
 

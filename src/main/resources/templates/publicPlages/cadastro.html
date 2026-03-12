@@ -24,7 +24,6 @@
 </header>
       
       
-      <!--TUDO QUE TA NO (atletaDto Prentence a esse formulario então não preicsa obj.name)-->
 
       <main class="flex flex-col  w-full  items-center  min-h-screen ">
          <form th:action="@{/atleta/save}" th:object="${atletaDtos}" class="flex flex-col gap-10" method="post">
@@ -167,7 +166,7 @@
 
                          <div class="w-1/6 flex flex-col gap-1.5">
                             <p class="text-2xl font-extrabold  mr-7 text-gray-400">NÚMERO</p>
-                            <input th:field="*{moradia_fk.sn}" type="password" name="" placeholder="Ex:" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input th:field="*{moradia_fk.sn}" type="number" name="" placeholder="Ex:" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                         
@@ -225,12 +224,12 @@
                     
                         <div class="w-full flex flex-col gap-1.5">
                             <p class="text-2xl font-extrabold  mr-7 text-gray-400">Altura Centímetro</p>
-                            <input th:field="*{alturaCetimentro}"  type="text" name="" placeholder="Nome da rua" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <input th:field="*{alturaCetimentro}"  type="text" name="" placeholder="Digite a altura" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                          <div class="w-full flex flex-col gap-1.5">
-                            <p class="text-2xl font-extrabold  mr-7 text-gray-400"> Peso Kilograma</p>
-                            <input th:field="*{pesoMigrama}" type="text" name="" placeholder="Nome da rua" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
+                            <p class="text-2xl font-extrabold  mr-7 text-gray-400"> Peso</p>
+                            <input th:field="*{pesoMigrama}" type="text" name="" placeholder="Digite o peso" id="" class=" py-3 px-3 rounded-2xl text-2xl border-4 border-sky-500">
                         </div>
 
                          <div class="w-full flex flex-col gap-1.5">

@@ -2,7 +2,6 @@ package com.api.Projeto_3.dtos;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.api.Projeto_3.dtos.enumDtos.EnumTipoSangue;
 import com.api.Projeto_3.model.AtletaModelo;
 import com.api.Projeto_3.model.enums.EnumUf;
 import com.api.Projeto_3.model.enums.EnumGenero;
