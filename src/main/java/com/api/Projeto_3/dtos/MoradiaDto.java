@@ -96,8 +96,17 @@ public MoradiaDto(MoradiaModel entiy) {
     public PerfisModelo getPerfil() {
         return perfil;
     }
+
+
+
+    @Override
+    public String toString() {
+        return "MoradiaDto [id=" + id + ", cep=" + cep + ", avenida=" + avenida + ", sn=" + sn + ", bairro=" + bairro
+                + ", cidade=" + cidade + ", perfil=" + perfil + "]";
+    }
   
 
+    
 
 
     

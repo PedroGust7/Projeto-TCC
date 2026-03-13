@@ -17,6 +17,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -73,15 +74,21 @@ public class PerfisModelo implements Serializable {
     @JoinColumn(name = "mord")
     private MoradiaModel moradia_fk;
 
+    @ManyToOne
+    @JoinColumn(name = "role_id") // Tente mudar de "role" para "role_id"
+    private RolesModel role;
+
 
     public PerfisModelo() {
     }
 
 
+    
+
     public PerfisModelo(Long id, String fotoImg, String name, String dataNascimento, String cpf, String rg,
             String email, String senha, String telefoneFixo, String telefoneZap, String pesoMigrama,
             String alturaCetimentro, EnumUf uf, EnumGenero sexo, EnumSague sangue, AfiliacaoModelo pais_fk,
-            MoradiaModel moradia_fk) {
+            MoradiaModel moradia_fk, RolesModel role) {
         this.id = id;
         this.fotoImg = fotoImg;
         this.name = name;
@@ -99,13 +106,8 @@ public class PerfisModelo implements Serializable {
         this.sangue = sangue;
         this.pais_fk = pais_fk;
         this.moradia_fk = moradia_fk;
+        this.role = role;
     }
-
-
-
-
-
-
 
 
 
@@ -114,117 +116,175 @@ public class PerfisModelo implements Serializable {
         return id;
     }
 
+
+
+
     public void setId(Long id) {
         this.id = id;
     }
+
+
+
 
     public String getFotoImg() {
         return fotoImg;
     }
 
+
+
+
     public void setFotoImg(String fotoImg) {
         this.fotoImg = fotoImg;
     }
+
+
+
 
     public String getName() {
         return name;
     }
 
+
+
+
     public void setName(String name) {
         this.name = name;
     }
+
+
+
 
     public String getDataNascimento() {
         return dataNascimento;
     }
 
+
+
+
     public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
+
+
+
 
     public String getCpf() {
         return cpf;
     }
 
+
+
+
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+
+
 
     public String getRg() {
         return rg;
     }
 
+
+
+
     public void setRg(String rg) {
         this.rg = rg;
     }
+
+
+
 
     public String getEmail() {
         return email;
     }
 
+
+
+
     public void setEmail(String email) {
         this.email = email;
     }
+
+
+
 
     public String getSenha() {
         return senha;
     }
 
+
+
+
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+
+
 
     public String getTelefoneFixo() {
         return telefoneFixo;
     }
 
+
+
+
     public void setTelefoneFixo(String telefoneFixo) {
         this.telefoneFixo = telefoneFixo;
     }
+
+
+
 
     public String getTelefoneZap() {
         return telefoneZap;
     }
 
+
+
+
     public void setTelefoneZap(String telefoneZap) {
         this.telefoneZap = telefoneZap;
     }
 
-    public String  getPesoMigrama() {
+
+
+
+    public String getPesoMigrama() {
         return pesoMigrama;
     }
 
-    public void setPesoMigrama(String  pesoMigrama) {
+
+
+
+    public void setPesoMigrama(String pesoMigrama) {
         this.pesoMigrama = pesoMigrama;
     }
 
-    public String  getAlturaCetimentro() {
+
+
+
+    public String getAlturaCetimentro() {
         return alturaCetimentro;
     }
 
-    public void setAlturaCetimentro(String  alturaCetimentro) {
+
+
+
+    public void setAlturaCetimentro(String alturaCetimentro) {
         this.alturaCetimentro = alturaCetimentro;
     }
 
-    public AfiliacaoModelo getPais_fk() {
-        return pais_fk;
-    }
 
-    public void setPais(AfiliacaoModelo pais_fk) {
-        this.pais_fk = pais_fk;
-    }
 
-    public MoradiaModel getMoradia_fk() {
-        return moradia_fk;
-    }
-
-    public void setMoradia_fk(MoradiaModel moradia_fk) {
-        this.moradia_fk = moradia_fk;
-    }
 
     public EnumUf getUf() {
         return uf;
     }
+
+
 
 
     public void setUf(EnumUf uf) {
@@ -232,9 +292,6 @@ public class PerfisModelo implements Serializable {
     }
 
 
-    public void setPais_fk(AfiliacaoModelo pais_fk) {
-        this.pais_fk = pais_fk;
-    }
 
 
     public EnumGenero getSexo() {
@@ -242,9 +299,13 @@ public class PerfisModelo implements Serializable {
     }
 
 
+
+
     public void setSexo(EnumGenero sexo) {
         this.sexo = sexo;
     }
+
+
 
 
     public EnumSague getSangue() {
@@ -252,9 +313,66 @@ public class PerfisModelo implements Serializable {
     }
 
 
+
+
     public void setSangue(EnumSague sangue) {
         this.sangue = sangue;
-    } 
+    }
+
+
+
+
+    public AfiliacaoModelo getPais_fk() {
+        return pais_fk;
+    }
+
+
+
+
+    public void setPais_fk(AfiliacaoModelo pais_fk) {
+        this.pais_fk = pais_fk;
+    }
+
+
+
+
+    public MoradiaModel getMoradia_fk() {
+        return moradia_fk;
+    }
+
+
+
+
+    public void setMoradia_fk(MoradiaModel moradia_fk) {
+        this.moradia_fk = moradia_fk;
+    }
+
+
+
+
+    public RolesModel getRole() {
+        return role;
+    }
+
+
+
+
+    public void setRole(RolesModel role) {
+        this.role = role;
+    }
+
+
+
+
+    @Override
+    public String toString() {
+        return "PerfisModelo [id=" + id + ", fotoImg=" + fotoImg + ", name=" + name + ", dataNascimento="
+                + dataNascimento + ", cpf=" + cpf + ", rg=" + rg + ", email=" + email + ", senha=" + senha
+                + ", telefoneFixo=" + telefoneFixo + ", telefoneZap=" + telefoneZap + ", pesoMigrama=" + pesoMigrama
+                + ", alturaCetimentro=" + alturaCetimentro + ", uf=" + uf + ", sexo=" + sexo + ", sangue=" + sangue
+                + ", pais_fk=" + pais_fk + ", moradia_fk=" + moradia_fk + ", role=" + role + "]";
+    }
+
 
 
     

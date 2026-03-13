@@ -33,7 +33,8 @@
   <h2 class="text-3xl font-bold text-center mb-12">Criar contas</h2>
   <div class="grid md:grid-cols-3 gap-8">
     
-    <a th:href="@{/cadastro/atleta}" class="block bg-white p-8 rounded-xl shadow border-2 border-transparent hover:border-blue-500 hover:shadow-xl transition">
+    <a th:href="@{/cadastro/atleta/{id}(id=1)}" 
+   class="block bg-white p-8 rounded-xl shadow border-2 border-transparent hover:border-blue-500 hover:shadow-xl transition">
     <div class="flex justify-center mb-4 text-blue-600">
         <img th:src="@{/img/atletaNav.png}" alt="" class="w-20">
     </div>

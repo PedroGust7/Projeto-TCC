@@ -128,6 +128,15 @@ public class AfiliacaoModelo implements Serializable {
     }
 
 
+    @Override
+    public String toString() {
+        return "AfiliacaoModelo [id=" + id + ", maeNome=" + maeNome + ", maeTelefone=" + maeTelefone + ", maeEmail="
+                + maeEmail + ", paiName=" + paiName + ", paiTelefone=" + paiTelefone + ", paiEmail=" + paiEmail
+                + ", perfis=" + perfis + "]";
+    }
+
+
+    
     
     
 

@@ -15,10 +15,10 @@
           <img class="w-8 " th:src="@{/img/sairHome.svg}">
       </a>
     </div>
-
+    <input type="hidden" name="idDaRole" th:value="${roleId}" />
     <p class="text-center font-extrabold text-white text-2xl whitespace-nowrap">
         CADASTRO DE ATLETA
-    </p>
+        </p>
 
     <div></div>
 </header>
@@ -26,36 +26,39 @@
       
 
       <main class="flex flex-col  w-full  items-center  min-h-screen ">
-         <form th:action="@{/atleta/save}" th:object="${atletaDtos}" class="flex flex-col gap-10" method="post">
+         <form th:action="@{/atleta/save/{id}(id=${roleId.id})}" th:object="${atletaDtos}" class="flex flex-col gap-10" method="post">
                 
                 <!--CADASTRO  PREMEIRA PARTE-->
-               <nav class="flex bg-gray-50/60 py-14 px-10 rounded-2xl gap-12 mr-auto w-full shadow shadow-2xl ">
-                     <section class="w-full">
-                        <label for="foto-upload" 
-                            class="flex flex-col gap-2 border-2 border-gray-500 items-center py-10 px-28 rounded-2xl border-dashed border-4 cursor-pointer hover:bg-gray-100 duration-300">
+              <nav class="flex bg-gray-50/60 py-14 px-10 rounded-2xl gap-12 mr-auto w-full shadow-2xl" th:object="${roleId}">
     
-                            <img th:src="@{/img/camera.svg}" class="w-32">
-                            
-                          <input  type="file" name="file" id="foto-upload" class="hidden">
-                        </label>
-                    </section>
-                <section class=" w-full flex justify-around items-center gap-7">
-                     <a href="" class="flex flex-col gap-2 px-28 py-7 border-sky-600 border-2 rounded-2xl hover:bg-sky-500/40 duration-500">
-                            <img th:src="@{/img/medico.svg}" alt="">
-                            <p class="font-bold text-gray-500">MEDICO</p>
-                    </a>
+    <section class="w-full">
+        <label for="foto-upload" 
+               class="flex flex-col gap-2 border-2 border-gray-500 items-center py-10 px-28 rounded-2xl border-dashed border-4 cursor-pointer hover:bg-gray-100 duration-300">
+            <img th:src="@{/img/camera.svg}" class="w-32" alt="Camera">
+            <input type="file" name="file" id="foto-upload" class="hidden">
+        </label>
+    </section>
 
-                    <a href="" class="flex flex-col gap-2 px-28 py-7 border-sky-600 border-2 rounded-2xl bg-sky-500/40 duration-500">
-                            <img th:src="@{/img/atletaBranco.svg}" alt="">
-                            <p class="font-bold text-red-50">ATLETA</p>
-                        </a>
+    <section class="w-full flex justify-around items-center gap-7">
+        
+        <a href="#" class="flex flex-col gap-2 px-28 py-7 border-sky-600 border-2 rounded-2xl hover:bg-sky-500/40 duration-500">
+            <img th:src="@{/img/medico.svg}" alt="Médico">
+            <p class="font-bold text-gray-500">MEDICO</p>
+        </a>
 
-                        <a href="" class="flex flex-col gap-2 px-28 py-7 px-10 items-center border-sky-600 border-2 rounded-2xl hover:bg-sky-500/40 duration-500">
-                            <img th:src="@{/img/medico.svg}" alt="" class="w-16">
-                            <p class="font-bold text-gray-500">TREINADOR</p>
-                        </a>
-                </section>
-            </nav>
+        <a th:href="@{/detalhes/{id}(id=*{id})}" 
+           class="flex flex-col gap-2 px-28 py-7 border-sky-600 border-2 rounded-2xl bg-sky-500/40 duration-500">
+            <img th:src="@{/img/atletaBranco.svg}" alt="Atleta">
+            <p class="font-bold text-red-50" th:text="*{authority}"></p> 
+        </a>
+
+        <a href="#" class="flex flex-col gap-2 px-28 py-7 px-10 items-center border-sky-600 border-2 rounded-2xl hover:bg-sky-500/40 duration-500">
+            <img th:src="@{/img/medico.svg}" alt="Treinador" class="w-16">
+            <p class="font-bold text-gray-500">TREINADOR</p>
+        </a>
+        
+    </section>
+</nav>
                <!--CADASTRO  PREMEIRA PARTE-->
 
                <!--PARTE DOIS DOS CAMPOS-->

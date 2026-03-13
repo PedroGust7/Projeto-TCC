@@ -25,7 +25,7 @@ public class AtletaDtos {
     private EnumUf ufDtos;
     private EnumGenero genero;
     private EnumSague sangue;
-
+    private RoleDtos roles;
     public AtletaDtos() {
     }
 
@@ -47,10 +47,7 @@ public class AtletaDtos {
         this.ufDtos = atl.getUf();
         this.genero = atl.getSexo();
         this.sangue = atl.getSangue();
-
-    
-
-    
+        this.roles = new RoleDtos(atl.getRole());
     }
 
 
@@ -58,6 +55,7 @@ public class AtletaDtos {
     public Long getId() {
         return id;
     }
+
 
 
 
@@ -240,6 +238,26 @@ public class AtletaDtos {
 
     public void setSangue(EnumSague sangue) {
         this.sangue = sangue;
+    }
+
+
+    public RoleDtos getRoles() {
+        return roles;
+    }
+
+
+    public void setRoles(RoleDtos roles) {
+        this.roles = roles;
+    }
+
+
+    @Override
+    public String toString() {
+        return "AtletaDtos [id=" + id + ", name=" + name + ", dataNascimento=" + dataNascimento + ", cpf=" + cpf
+                + ", rg=" + rg + ", email=" + email + ", senha=" + senha + ", telefoneFixo=" + telefoneFixo
+                + ", telefoneZap=" + telefoneZap + ", pesoMigrama=" + pesoMigrama + ", alturaCetimentro="
+                + alturaCetimentro + ", pais_fk=" + pais_fk + ", moradia_fk=" + moradia_fk + ", ufDtos=" + ufDtos
+                + ", genero=" + genero + ", sangue=" + sangue + ", roles=" + roles + "]";
     }
 
 

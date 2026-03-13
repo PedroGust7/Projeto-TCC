@@ -110,6 +110,18 @@ public class AfiliacaoDtos implements Serializable {
         this.perfis = perfis;
     }
 
+    @Override
+    public String toString() {
+        return "AfiliacaoDtos [id=" + id + ", maeNome=" + maeNome + ", maeTelefone=" + maeTelefone + ", maeEmail="
+                + maeEmail + ", paiName=" + paiName + ", paiTelefone=" + paiTelefone + ", paiEmail=" + paiEmail
+                + ", perfis=" + perfis + "]";
+    }
+
+
+    
+
+
+    
     
 
 }

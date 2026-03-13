@@ -147,7 +147,16 @@ public class MoradiaModel implements Serializable {
 
 
 
+    @Override
+    public String toString() {
+        return "MoradiaModel [id=" + id + ", cep=" + cep + ", avenida=" + avenida + ", sn=" + sn + ", bairro=" + bairro
+                + ", cidade=" + cidade + ", perfil=" + perfil + "]";
+    }
+
+
+
   
+    
 
 
     
