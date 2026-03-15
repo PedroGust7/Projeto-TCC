@@ -46,7 +46,7 @@ public class PublicController {
 
         model.addAttribute("roleId", role);
         model.addAttribute("medicosDtos", medicosDtos);
-        return "publicPlages/cadastroMedico.html";
+        return "publicPlages/cadastroMedico";
     }
 
 
@@ -60,7 +60,7 @@ public class PublicController {
         var role = service.infoRoles(id);
         model.addAttribute("roleId", role);
         model.addAttribute("treinadorDtos", treinadorDtos);
-        return "publicPlages/cadastroTreinador.html";
+        return "publicPlages/cadastroTreinador";
     }
 
 
@@ -72,12 +72,12 @@ public class PublicController {
 
        @GetMapping("/test")
     public String getTest() {
-         return "publicPlages/CadastroTest.html";
+         return "publicPlages/CadastroTest";
     }
 
     @GetMapping("/login")
     public String getMethodName() {
-        return "publicPlages/Login.html";
+        return "publicPlages/Login";
     }
  //SALVANDO ATLETA 
 @PostMapping("/atleta/save/{id}")
