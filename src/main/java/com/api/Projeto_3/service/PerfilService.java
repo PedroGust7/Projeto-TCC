@@ -93,6 +93,17 @@ public class PerfilService {
         }
 
 
+    //buscado nome do role
+
+    public String buscarNomeRoles(Long id){
+        RoleDtos role = infoRoles(id);
+
+        if(role != null && role.getAuthority() != null){
+            return role.getAuthority();
+        }
+        return "Atleta";
+    }
+
 
 
 

@@ -1,33 +1,79 @@
 package com.api.Projeto_3.dtos;
-import com.api.Projeto_3.model.*;
-import com.api.Projeto_3.model.enums.EnumUf;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.api.Projeto_3.model.AtletaModelo;
+import com.api.Projeto_3.model.MedicoModelo;
+import com.api.Projeto_3.model.TreinadorModel;
 import com.api.Projeto_3.model.enums.EnumGenero;
 import com.api.Projeto_3.model.enums.EnumSague;
+import com.api.Projeto_3.model.enums.EnumUf;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 public class PerfilsDtos {
    private Long id;  
 
+   @NotBlank(message = "O campo de nome não pode vazio !!!")
+   @Size(min = 5  , max = 50 , message = "O nome de ser maior que 5 letreas")
     private String name;
-    private String dataNascimento;
+    
+    @NotNull(message = "A data de nascimento é obrigatória")
+    @PastOrPresent(message = "A data não pode estar no futuro")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dataNascimento;
+
+    @CPF(message = "CPF inválido")
     private String cpf;
+
+   @Size(min = 5  , max = 50 , message = "O nome de ser maior que 5 letreas")
     private String rg;
+
+    @Email(message = "Deve ser um email valido !!")
     private String email;
+
+    @Size(min = 5 , message = "Senha ter mas de  5 cacteres")
     private String senha;
+    
+    @NotBlank(message = "O campo não pode estar vazio")
+    @Pattern(regexp = "^[0-9]+$", message = "O campo deve conter apenas números")
     private String telefoneFixo;
+    
+    @NotBlank(message = "O campo não pode estar vazio")
+    @Pattern(regexp = "^[0-9]+$", message = "O campo deve conter apenas números")
     private String telefoneZap;
+    
+    @NotBlank(message = "O campo não pode estar vazio")
+    @Pattern(regexp = "^[0-9]+$", message = "O campo deve conter apenas números")
     private String pesoMigrama;
+
+
+    @NotBlank(message = "O campo não pode estar vazio")
+    @Pattern(regexp = "^[0-9]+$", message = "O campo deve conter apenas números")
     private String alturaCetimentro;  
+
     private AfiliacaoDtos pais_fk;  
     private MoradiaDto moradia_fk;
     private EnumUf ufDtos;
+    
+    @NotNull(message = "Selecione o tipo genero")
     private EnumGenero genero;
+
+    @NotNull(message = "Selecione o tipo sanguíneo")
     private EnumSague sangue;
     private RoleDtos roles;
     public PerfilsDtos() {
     }
 
     public  PerfilsDtos(AtletaModelo atl) {
-        if(!(atl==null)){
             this.id = atl.getId();
             this.name = atl.getName();
             this.dataNascimento = atl.getDataNascimento();
@@ -45,11 +91,9 @@ public class PerfilsDtos {
             this.genero = atl.getSexo();
             this.sangue = atl.getSangue();
             this.roles = new RoleDtos(atl.getRole());
-        }
     }
 
     public  PerfilsDtos(MedicoModelo med) {
-        if(!(med==null)){
             this.id = med.getId();
             this.name = med.getName();
             this.dataNascimento = med.getDataNascimento();
@@ -67,13 +111,10 @@ public class PerfilsDtos {
             this.genero = med.getSexo();
             this.sangue = med.getSangue();
             this.roles = new RoleDtos(med.getRole());
-                   
-        }
     }
 
 
         public  PerfilsDtos(TreinadorModel trei) {
-        if(!(trei==null)){
             this.id = trei.getId();
             this.name = trei.getName();
             this.dataNascimento = trei.getDataNascimento();
@@ -91,8 +132,6 @@ public class PerfilsDtos {
             this.genero = trei.getSexo();
             this.sangue = trei.getSangue();
             this.roles = new RoleDtos(trei.getRole());
-                   
-        }
     }
 
 
@@ -124,13 +163,13 @@ public class PerfilsDtos {
 
 
 
-    public String getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
 
 
-    public void setDataNascimento(String dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

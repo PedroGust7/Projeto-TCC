@@ -1,6 +1,8 @@
 package com.api.Projeto_3.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.api.Projeto_3.model.enums.EnumUf;
 import com.api.Projeto_3.model.enums.EnumSague;
@@ -19,6 +21,7 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.PastOrPresent;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -37,8 +40,8 @@ public class PerfisModelo implements Serializable {
     private String name;
 
   
-    @Column(name = "data_nascimento")
-    private String dataNascimento;
+   @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private LocalDate dataNascimento;
 
     private String cpf;
 
@@ -85,7 +88,7 @@ public class PerfisModelo implements Serializable {
 
     
 
-    public PerfisModelo(Long id, String fotoImg, String name, String dataNascimento, String cpf, String rg,
+    public PerfisModelo(Long id, String fotoImg, String name, LocalDate dataNascimento, String cpf, String rg,
             String email, String senha, String telefoneFixo, String telefoneZap, String pesoMigrama,
             String alturaCetimentro, EnumUf uf, EnumGenero sexo, EnumSague sangue, AfiliacaoModelo pais_fk,
             MoradiaModel moradia_fk, RolesModel role) {
@@ -154,14 +157,14 @@ public class PerfisModelo implements Serializable {
 
 
 
-    public String getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
 
 
 
-    public void setDataNascimento(String dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -371,17 +374,7 @@ public class PerfisModelo implements Serializable {
                 + ", telefoneFixo=" + telefoneFixo + ", telefoneZap=" + telefoneZap + ", pesoMigrama=" + pesoMigrama
                 + ", alturaCetimentro=" + alturaCetimentro + ", uf=" + uf + ", sexo=" + sexo + ", sangue=" + sangue
                 + ", pais_fk=" + pais_fk + ", moradia_fk=" + moradia_fk + ", role=" + role + "]";
-    }
-
-
-
-    
-
-
-    
-
-
-    
+    } 
 
 }    
 
