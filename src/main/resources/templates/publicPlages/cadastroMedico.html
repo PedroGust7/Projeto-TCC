@@ -1,243 +1,149 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <script src="https://cdn.tailwindcss.com"></script>
-     <link rel="icon" th:href="@{/img/iconFun.png}">
-   
+    <title>Novo Cadastro do Perfil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        input::placeholder { color: #9ca3af; font-size: 0.875rem; }
+    </style>
+</head>
+<body class="bg-slate-50 p-4 md:p-8">
 
-<body class="flex flex-col gap-11 w-full bg-gray-200 ">
-
-    <header class="bg-green-600 text-2xl font-extrabold text-center py-3 xl:py-6 text-white w-full flex justify-between px-14">
-        <a th:href="@{/home}" class="w-3/6 flex ">
-                <img th:src="@{/img/sairHome.svg}" alt="">
-        </a>
-         <div class="w-full xl:ml-52 flex justify-baseline xl:mr-36">
-            <h1 class="xl:text-3xl">Cadastro Medico</h1>
-        </div>
-        </div>
-
-       
-
-   <input type="hidden" name="idDaRole" th:value="${roleId}" />
-    </header>
-
-<form th:action="@{/medico/save/{id}(id=${roleId.id})}" th:object="${medicosDtos}" method="post">
-    <nav class="sm:w-full flex items-center gap-2 justify-center flex-col lg:flex-row lg:gap-12 lg:w-full lg:px-16 bg-white py-4 lg:py-7 lg:rounded-2xl lg:w-5/6 ">
-        <section class="border-4 border-dashed flex flex-col items-center gap-3 w-5/6 py-3 duration-500 xl:w-full xl:px-24 xl:rounded-2xl ">
-            <img th:src="@{/img/cameraVerd.svg}" class="w-16 lg:w-40">
-            <p class="lg:text-3xl font-black text-gray-700 ">FOTO</p>
-        </section>
-
-
-        <a  th:href="@{/medico/{id}(id=*{id})}" class="pointer-events-none border-4  border-green-600  bg-green-600  flex flex-col items-center gap-5 w-5/6  duration-500 xl:w-full py-2 xl:rounded-2xl">
-            <img th:src="@{/img/MedicoBranco.svg}" class="w-16">
-            <p class="lg:text-2xl font-black text-white"  th:text="${roleId.authority}"></p>
-        </a>
+    <div class="max-w-4xl mx-auto space-y-6">
         
-        <a   th:href="@{/cadastro/atleta/{id}(id=1)}" class="border-4 border-green-600 hover:bg-green-300  bg-white flex flex-col items-center gap-5 w-5/6 duration-500 xl:w-full py-2 xl:rounded-2xl">
-            <img th:src="@{/img/atletaVerd.svg}" class="w-16">
-            <p class="lg:text-2xl font-black text-gray-700 ">Atleta</p>
-        </a>
-        
-        <a  th:href="@{/cadastro/treinador/{id}(id=3)}" class="border-4 border-green-600 flex flex-col items-center gap-5 w-5/6 hover:bg-green-200 duration-500 xl:w-full py-2 xl:rounded-2xl">
-            <img th:src="@{/img/treinadorVerd.svg}" class="w-16">
-            <p class="lg:text-2xl font-black text-gray-700 ">Treinador</p>
-        </a>
-    </nav>
-
-
-        <main class="xl:mt-14 mt-4 px-3">
-            <section class="bg-white px-3 py-2 xl:py-12 xl:px-6">
-                <h1 class="text-2xl font-bold text-green-700 lx:font-extrabold">DADOS PESSOAS</h1>
-
-                    <section class="flex flex-col gap-3 xl:flex-row xl:mt-5 ">
-                        <div class="w-full">
-                        <p class="xl:text-2xl font-bold xl:ml-3">Nome</p>
-                        <input th:field="*{name}" type="text" placeholder="Digite o nome" class="mt-2 w-full bg-white xl:w-11/12 py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3 ">
-                        </div>
-                        
-                        <div class=" xl:w-3/6">
-                            <p class="xl:text-2xl font-bold">DATA DE NASCIMENTO</p>
-                            <input th:field="*{dataNascimento}" type="date" placeholder="Digite o nome" class="mt-2 bg-white w-full py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
-                        </div>
-            </section>
-
-
-        <section class="flex flex-col gap-3 xl:flex-row xl:mt-5 ">
-            <div class="w-full">
-                <p class="xl:text-2xl font-bold xl:ml-3">CPF</p>
-                <input th:field="*{cpf}" type="text" placeholder="000.000.000-00" class="mt-2 w-full bg-white py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
+        <header class="flex justify-between items-center border-b pb-4">
+            <h1 class="text-sm font-bold text-slate-800 uppercase tracking-wider">Novo Cadastro do Perfil</h1>
+            <div class="flex gap-1">
+                <div class="h-1.5 w-8 bg-orange-500 rounded-full"></div>
+                <div class="h-1.5 w-8 bg-slate-200 rounded-full"></div>
             </div>
+        </header>
+
+        <form class="space-y-6">
             
-            <div class="w-full">
-                <p class="xl:text-2xl font-bold xl:ml-3">RG</p>
-                <input th:field="*{rg}" type="text" placeholder="0000" class="mt-2 w-full bg-white py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
-            </div>
+            <section class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                <div class="flex flex-col md:flex-row gap-6 items-center">
+                    <div class="w-32 h-32 border-2 border-dashed border-slate-200 rounded-lg flex flex-col items-center justify-center text-slate-400 gap-2 cursor-pointer hover:bg-slate-50">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <span class="text-[10px] font-bold uppercase">Adicionar Foto</span>
+                    </div>
 
-            <div class="w-full">
-                <p class="xl:text-2xl font-bold xl:ml-3">SELECIONAR GENERO</p>
-                <select th:field="*{genero}" class="mt-2 w-full bg-white py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
-                      <option th:each="s : ${listEnumGenero}" th:value="${s}" th:text="${s.name}"></option>
-                </select>
-
-            </div>
-
-</section>
-
-</section>
-
-
-<!--CONTATOS-->
-
-        <section class="bg-white px-3 py-2 xl:py-12 xl:px-6 mt-5 xl:mt-11">
-            <h1 class="text-2xl font-bold text-green-700 lx:font-extrabold">DADOS DE ACESSSO</h1>
-                <section class="flex flex-col gap-3 xl:flex-row xl:mt-5 ">
-                        <div class="w-full">
-                        <p class="xl:text-2xl font-bold xl:ml-3">EMAIL</p>
-                        <input  th:field="*{email}" type="text" placeholder="exemplo@email.com" class="mt-2 w-full bg-white xl:w-11/12 py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
+                    <div class="flex-1 w-full">
+                        <label class="text-[10px] font-bold text-slate-500 uppercase mb-3 block text-center md:text-left">Tipo de Utilizador</label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <button type="button" class="flex flex-col items-center justify-center p-4 rounded-xl border-2 border-indigo-600 bg-indigo-50 text-indigo-700 transition-all">
+                                <span class="text-xl mb-1">⚕️</span>
+                                <span class="text-xs font-bold uppercase">Médico</span>
+                            </button>
+                            <button type="button" class="flex flex-col items-center justify-center p-4 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all">
+                                <span class="text-xl mb-1">🏃‍♂️</span>
+                                <span class="text-xs font-bold uppercase">Atleta</span>
+                            </button>
+                            <button type="button" class="flex flex-col items-center justify-center p-4 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all">
+                                <span class="text-xl mb-1">📋</span>
+                                <span class="text-xs font-bold uppercase">Treinador</span>
+                            </button>
                         </div>
-
-                        <div class="w-full">
-                        <p class="xl:text-2xl font-bold">SENHA</p>
-                        <input th:field="*{senha}" type="password" placeholder="*****" class="mt-2 bg-white w-full py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
-                        </div>
-                </section>
-
-                <section class="flex flex-col gap-3 xl:flex-row xl:mt-5 ">
-                            <div class="w-full">
-                                <p class="xl:text-2xl font-bold xl:ml-3">TEL. FIXO</p>
-                                <input th:field="*{telefoneFixo}" type="number" placeholder="(00) 0000-0000" class="mt-2 w-full bg-white xl:w-11/12 py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
-                            </div>
-                            <div class="w-full">
-                                  <p class="xl:text-2xl font-bold">Celular / Telemóvel</p>
-                                 <input th:field="*{telefoneZap}" type="number" placeholder="(00) 0000-0000" class="mt-2 bg-white w-full py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
-                            </div>
-                </section>
-
-
-        </section>
-
-
-
-<!--ENDEREÇO-->
-
-            <section class="bg-white px-3 py-2 xl:py-12 xl:px-6 mt-5 xl:mt-11">
-            <h1 class="text-2xl font-bold text-green-700 lx:font-extrabold">ENDEREÇO </h1>
-                <section class="flex flex-col gap-3 xl:flex-row xl:mt-5 ">
-                    <div class="w-full xl:w-1/5">
-                        <p class="xl:text-2xl font-bold xl:ml-3">CEP</p>
-                        <input th:field="*{moradia_fk.cep}" type="text" placeholder="000000" class="mt-2 w-full bg-white xl:w-11/12 py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
                     </div>
-                    <div class="w-full">
-                        <p class="xl:text-2xl font-bold">RUA / AVENIDA</p>
-                        <input th:field="*{moradia_fk.avenida}" type="text" placeholder="0000" class="mt-2 bg-white w-full py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
-                    </div>
-                        <div class="w-full xl:w-1/3">
-                        <p class="xl:text-2xl font-bold">NUMERO</p>
-                        <input th:field="*{moradia_fk.sn}" type="text" placeholder="Nome da rua" class="mt-2 bg-white w-full py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
-                    </div>
-                </section>
-
-            <section class="flex flex-col gap-3 xl:flex-row xl:mt-5 ">
-                <div class="w-full">
-                    <p class="xl:text-2xl font-bold">BAIRRO</p>
-                    <input  th:field="*{moradia_fk.bairro}" type="number" placeholder="Digitar o Bairro" class="mt-2 bg-white w-full py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
-                </div>
-                <div class="w-full">
-                    <p class="xl:text-2xl font-bold">CIDADE</p>
-                    <input  th:field="*{moradia_fk.cidade}" type="number" placeholder="(00) 0000-0000" class="mt-2 bg-white w-full py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
-                </div>
-                        <div class="w-full xl:w-1/4">
-                            <p class="xl:text-2xl font-bold">UF</p>
-                        <select th:field="*{ufDtos}" class="mt-2 bg-white w-full py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
-                            <option value="">--</option>
-                            <option th:each="uf : ${listaUfs}" th:value="${uf}" th:text="${uf.sigla}">
-                            </option>
-                        </select>
                 </div>
             </section>
 
-
-            </section>
-
-<!--SAUDE-->
-
-        <section class="bg-white px-3 py-2 xl:py-12 xl:px-6 mt-5 xl:mt-11">
-            <h1 class="text-2xl font-bold text-green-700 lx:font-extrabold">DADOS SAUDE BIOMETRICA</h1>
-                    <section class="flex flex-col gap-3 xl:flex-row xl:mt-5 ">
-                        <div class="w-full">
-                        <p class="xl:text-2xl font-bold">ALTURA</p>
-                        <input th:field="*{alturaCetimentro}" type="number" placeholder="Digitar a altura" class="mt-2 bg-white w-full py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
+            <section class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                <h2 class="text-sm font-bold text-indigo-600 flex items-center gap-2 mb-4 uppercase italic">
+                    <span>👥</span> Dados Pessoais
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="md:col-span-3">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase">Nome Completo</label>
+                        <input type="text" placeholder="Insira o nome completo" class="w-full mt-1 p-2 border border-slate-200 rounded-md focus:ring-2 focus:ring-indigo-500 outline-none">
                     </div>
-                    <div class="w-full">
-                        <p class="xl:text-2xl font-bold">PESO</p>
-                        <input th:field="*{pesoMigrama}" type="number" placeholder="0000" class="mt-2 bg-white w-full py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
+                    <div>
+                        <label class="text-[10px] font-bold text-slate-400 uppercase">Data de Nascimento</label>
+                        <input type="date" class="w-full mt-1 p-2 border border-slate-200 rounded-md focus:ring-2 focus:ring-indigo-500 outline-none text-slate-500">
                     </div>
-                    <div class="w-full">
-                                <p class="xl:text-2xl font-bold">TIPO SW SANGUÍNEO</p>
-                        <select th:field="*{sangue}" class="mt-2 bg-white w-full py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
-                                <option value="" class="disabled">Selecione...</option>
-                                <option th:each="s : ${listSague}" th:value="${s}" th:text="${s.descricao}"></option>
-                           
+                    <div class="md:col-span-1">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase">CPF</label>
+                        <input type="text" placeholder="000.000.000-00" class="w-full mt-1 p-2 border border-slate-200 rounded-md outline-none">
+                    </div>
+                    <div class="md:col-span-1">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase">RG</label>
+                        <input type="text" placeholder="00.000.000-0" class="w-full mt-1 p-2 border border-slate-200 rounded-md outline-none">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase">Sexo</label>
+                        <select class="w-full mt-1 p-2 border border-slate-200 rounded-md outline-none bg-white text-slate-500">
+                            <option>Selecione...</option>
                         </select>
                     </div>
-                    </section>
-        </section>
+                </div>
+            </section>
 
+            <section class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                <h2 class="text-sm font-bold text-indigo-600 flex items-center gap-2 mb-4 uppercase italic">
+                    <span>📍</span> Endereço
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
+                    <div class="md:col-span-1">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase">CEP</label>
+                        <input type="text" placeholder="00000-000" class="w-full mt-1 p-2 border border-slate-200 rounded-md outline-none">
+                    </div>
+                    <div class="md:col-span-4">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase">Rua / Avenida</label>
+                        <input type="text" placeholder="Nome da rua" class="w-full mt-1 p-2 border border-slate-200 rounded-md outline-none">
+                    </div>
+                    <div class="md:col-span-1">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase">Número</label>
+                        <input type="text" placeholder="Ex: 123" class="w-full mt-1 p-2 border border-slate-200 rounded-md outline-none">
+                    </div>
+                </div>
+            </section>
 
-<!--AFILIAÇÃO-->
-
-    <section class="bg-white px-3 py-2 xl:py-12 xl:px-6 mt-5 xl:mt-11">
-        <h1 class="text-2xl font-bold text-green-700 lx:font-extrabold">AFILIAÇÃO </h1>
-            <section class="flex flex-col justify-between mt-3 xl:mt-9 xl:flex-row xl:gap-6">
-                <div class="w-full">
-                    <div class=" text-center border-b-8 border-green-600 w-1/12 ">
-                        <h1 class="xl:text-2xl ">MAE</h1>
-                    </div>
-                    <div class="w-full xl:mt-6 mt-3">
-                        <p class=" font-bold">NOME DA MÃE</p>
-                        <input th:field="*{pais_fk.maeNome}" type="text" placeholder="Digitar nome da mãe" class="mt-2 bg-white w-full py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
-                    </div>
-                    <div class="w-full xl:mt-6 mt-3">
-                        <p class=" font-bold">TELEFONE</p>
-                        <input th:field="*{pais_fk.maeTelefone}" type="number" placeholder="Telefone" class="mt-2 bg-white w-full py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
-                    </div>
-                    <div class="w-full xl:mt-6 mt-3">
-                        <p class=" font-bold">E-MAIL</p>
-                        <input th:field="*{pais_fk.maeEmail}" type="email" placeholder="Digitar o Bairro" class="mt-2 bg-white w-full py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
-                    </div>
-                 </div>
-                <div class="xl:hidden h-7"></div>
-
-                    <div class="w-full">
-                            <div class=" text-center border-b-8 border-green-600 w-1/12 ">
-                                <h1 class="xl:text-2xl ">PAI</h1>
-                            </div>
-                        <div class="w-full xl:mt-6 mt-3">
-                            <p class=" font-bold">NOME DA PAI</p>
-                             <input  th:field="*{pais_fk.paiName}" type="text" placeholder="Digitar nome da mãe" class="mt-2 bg-white w-full py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
-                            </div>
-                        <div class="w-full xl:mt-6 mt-3">
-                            <p class=" font-bold">TELEFONE</p>
-                            <input  th:field="*{pais_fk.paiTelefone}" type="number" placeholder="Telefone" class="mt-2 bg-white w-full py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
+            <section class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                <h2 class="text-sm font-bold text-indigo-600 flex items-center gap-2 mb-6 uppercase italic">
+                    <span>❤️</span> Filiação
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <h3 class="text-[10px] font-bold text-indigo-600 border-b-2 border-indigo-600 inline-block uppercase">Dados da Mãe</h3>
+                        <div>
+                            <label class="text-[10px] font-bold text-slate-400 uppercase">Nome da Mãe</label>
+                            <input type="text" placeholder="Nome completo da mãe" class="w-full mt-1 p-2 border border-slate-200 rounded-md outline-none">
                         </div>
-                        <div class="w-full xl:mt-6 mt-3">
-                            <p class=" font-bold">E-MAIL</p>
-                            <input th:field="*{pais_fk.paiEmail}" type="email" placeholder="Digitar o Bairro" class="mt-2 bg-white w-full py-2 px-1 border-4 border-green-500 xl:rounded-2xl xl:py-3 xl:px-3">
+                        <div>
+                            <label class="text-[10px] font-bold text-slate-400 uppercase">E-mail</label>
+                            <input type="email" placeholder="mae@email.com" class="w-full mt-1 p-2 border border-slate-200 rounded-md outline-none">
+                        </div>
                     </div>
+                    <div class="space-y-4">
+                        <h3 class="text-[10px] font-bold text-indigo-600 border-b-2 border-indigo-600 inline-block uppercase">Dados do Pai</h3>
+                        <div>
+                            <label class="text-[10px] font-bold text-slate-400 uppercase">Nome do Pai</label>
+                            <input type="text" placeholder="Nome completo do pai" class="w-full mt-1 p-2 border border-slate-200 rounded-md outline-none">
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-bold text-slate-400 uppercase">E-mail</label>
+                            <input type="email" placeholder="pai@email.com" class="w-full mt-1 p-2 border border-slate-200 rounded-md outline-none">
+                        </div>
                     </div>
-                </section>
-    </section>
-</main>
+                </div>
+            </section>
 
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-4">
+                <button type="reset" class="text-[10px] font-bold text-slate-400 uppercase hover:text-slate-600 transition-colors">Limpar Campos</button>
+                <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-12 rounded-lg shadow-md transition-all uppercase text-sm tracking-widest">
+                    Finalizar Cadastro
+                </button>
+            </div>
 
-    <section class="flex xl:justify-center xl:pb-5">
-            <button class="mt-5 w-full text-center bg-green-600 py-3 text-2xl font-bold text-white hover:bg-green-500 hover:text-3xl duration-500 xl:w-2/5 xl:px-4 xl:rounded-2xl">Enviar</button>
-    </section>
-
-</form>
+        </form>
+    </div>
 
 </body>
 </html>
